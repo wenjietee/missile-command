@@ -7,5 +7,30 @@
 		<link rel="stylesheet" href="css/style.css" />
 		<title>Missile Command</title>
 	</head>
-	<body></body>
+	<body>
+		<div class="modal" id="modal-start">
+			<div id="modal-content">
+				<h4>Use your mouse to aim and destroy enemy missiles and defend your cities.</br>
+				</br>
+					Don't let all of your cities get destroyed!</h4>
+				<button id="start">START</button>
+			</div>
+		</div>
+		<div class="modal" id="modal-continue">
+			<div id="modal-content">
+				<h3>Score: </h3>
+				<h3>Missiles Left: <span id="missiles-left">1</span> x 200</h3>
+				<h3>Cities Left: <span id="cities-left">1</span> x 500</h3>
+				<h3>Total Score: <span id="score">1</span></h3>
+				<button id="continue">NEXT WAVE</button>
+			</div>
+		</div>
+		<div class="modal" id="modal-gameover">
+			<div id="modal-content">
+				<h3>Game Over!</h3>
+				<h3>Score: <span id="score">1</span></h3>
+				<button id="restart">PLAY AGAIN?</button>
+			</div>
+		</div>
+	</body>
 </html>
