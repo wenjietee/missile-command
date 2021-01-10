@@ -25,6 +25,16 @@ ready(function () {
 	const c = canvas.getContext('2d');
 
 	//////////////////////
+	// Helper Functions
+	/////////////////////
+
+	const drawCircle = (x, y, radius, color) => {
+		c.beginPath();
+		c.arc(x, y, radius, Math.PI * 2, false);
+		c.fillStyle = color;
+		c.fill();
+	};
+	//////////////////////
 	// Player Class
 	/////////////////////
 	class Player {
@@ -34,17 +44,26 @@ ready(function () {
 			this.y = canvas.height;
 			this.radius = radius;
 			this.color = 'tomato';
-		}
 
-		render() {
-			c.beginPath();
-			c.arc(this.x, this.y, this.radius, Math.PI * 2, false);
-			c.fillStyle = this.color;
-			c.fill();
+			drawCircle(this.x, this.y, this.radius, this.color);
+		}
+	}
+
+	//////////////////////
+	// Missile Class
+	/////////////////////
+	class Missile {
+		constructor(x, y, velocity) {
+			this.x = x;
+			this.y = y;
+			this.velocity = velocity;
+			this.radius = 10;
+			this.color = 'blue';
+
+			drawCircle(this.x, this.y, this.radius, this.color);
 		}
 	}
 
 	const player = new Player(30);
-
 	player.render();
 });
