@@ -100,6 +100,26 @@ class Missile {
 }
 
 //////////////////////
+// Explosion Class
+/////////////////////
+
+class Explosion {
+	constructor(x, y, radius, color) {
+		this.x = x;
+		this.y = y;
+		this.radius = radius;
+		this.color = color;
+	}
+	render() {
+		drawCircle(this.x, this.y, this.radius, this.color);
+	}
+	update() {
+		this.render();
+		this.radius += 2;
+	}
+}
+
+//////////////////////
 // Enemy Class
 /////////////////////
 
@@ -121,7 +141,12 @@ class EnemyMissileFactory {
 
 	createEnemy() {
 		setInterval(() => {
-			this.enemies.push(new EnemyMissile(100, 0, 1, 1, 5, 'red'));
+			const velocities = getVelocitiesXY(50, 50);
+			// generate Math.random()*canvas height/width to get random spawn point
+			// make random function to generate random coordinates
+			this.enemies.push(
+				new EnemyMissile(1, 1, velocities.x, velocities.y, 15, 'red')
+			);
 		}, 2000);
 	}
 
@@ -149,12 +174,14 @@ addEventListener('click', (event) => {
 });
 
 /////// test program /////////
+
 // player obj
 const player = new Player(30);
 // enemy factory obj
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
 
+const explode = new Explosion(400, 400, 5, 'tomato');
 // animate canvas
 const animate = () => {
 	requestAnimationFrame(animate);
@@ -173,5 +200,4 @@ animate();
 // make enemies spawn randomly from top and travel to the ground
 // consider putting push missile on click into player object
 // consider how to break it into multiple files
-// consider breaking canvas into an object
 // change enemy shape or overlay sprite and get orientation
