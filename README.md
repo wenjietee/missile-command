@@ -32,6 +32,7 @@ https://developer.iconfinder.com/reference
 - HTML
 - CSS
 - Javascript
+- JQuery
 - Ajax
 - Canvas
 
