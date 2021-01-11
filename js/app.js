@@ -1,19 +1,3 @@
-// ////////////////////////
-// // DOM Ready
-// ////////////////////////
-
-// function ready(callbackFunc) {
-// 	if (document.readyState !== 'loading') {
-// 		callbackFunc();
-// 	} else if (document.addEventListener) {
-// 		document.addEventListener('DOMContentLoaded', callbackFunc);
-// 	}
-// }
-
-// ready(function () {
-
-// });
-
 //////////////////////
 // Init Canvas
 /////////////////////
@@ -55,6 +39,40 @@ const getVelocitiesXY = (x, y) => {
 };
 
 //////////////////////
+// Missile Class
+/////////////////////
+
+class Missile {
+	constructor(x, y, velocityX, velocityY, radius, color) {
+		this.x = x;
+		this.y = y;
+		this.velocityX = velocityX;
+		this.velocityY = velocityY;
+		this.radius = radius;
+		this.color = color;
+	}
+
+	render() {
+		drawCircle(this.x, this.y, this.radius, this.color);
+	}
+
+	update() {
+		this.render();
+		this.x = this.x + this.velocityX;
+		this.y = this.y + this.velocityY;
+	}
+	// explode(x, y) {
+	// 	this.render();
+	// 	this.x = x;
+	// 	this.y = y;
+	// 	this.color = 'orange';
+	// 	if (this.radius !== this.maxRadius) {
+	// 		this.radius += 2;
+	// 	}
+	// }
+}
+
+//////////////////////
 // Player Class
 /////////////////////
 
@@ -80,7 +98,6 @@ class Player {
 		});
 	}
 	fire() {
-		// might be able to put this into player class readyToFire() method
 		addEventListener('click', (event) => {
 			// get velocities x y of missile
 			const velocities = getVelocitiesXY(
@@ -99,55 +116,9 @@ class Player {
 					'blue'
 				)
 			);
+
+			// on hit explode
 		});
-	}
-}
-
-//////////////////////
-// Missile Class
-/////////////////////
-
-class Missile {
-	constructor(x, y, velocityX, velocityY, radius, color) {
-		this.x = x;
-		this.y = y;
-		this.velocityX = velocityX;
-		this.velocityY = velocityY;
-		this.radius = radius;
-		this.color = color;
-	}
-
-	render() {
-		drawCircle(this.x, this.y, this.radius, this.color);
-	}
-
-	update() {
-		this.render();
-		this.x = this.x + this.velocityX;
-		this.y = this.y + this.velocityY;
-	}
-}
-
-//////////////////////
-// Explosion Class
-/////////////////////
-
-class Explosion {
-	constructor(x, y, radius, color) {
-		this.x = x;
-		this.y = y;
-		this.radius = radius;
-		this.maxRadius = 100;
-		this.color = color;
-	}
-	render() {
-		drawCircle(this.x, this.y, this.radius, this.color);
-	}
-	update() {
-		this.render();
-		if (this.radius !== this.maxRadius) {
-			this.radius += 2;
-		}
 	}
 }
 
@@ -242,24 +213,6 @@ class EnemyMissileFactory {
 		});
 	}
 }
-
-//////////////////////
-// Event Listeners
-/////////////////////
-
-// // might be able to put this into player class readyToFire() method
-// addEventListener('click', (event) => {
-// 	// get velocities x y of missile
-// 	const velocities = getVelocitiesXY(
-// 		event.clientY - playerY,
-// 		event.clientX - playerX
-// 	);
-
-// 	// on click create a new missile
-// 	player.missileArray.push(
-// 		new Missile(playerX, playerY, velocities.x * 6, velocities.y * 6, 5, 'blue')
-// 	);
-// });
 
 /////// test program /////////
 
