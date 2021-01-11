@@ -52,6 +52,7 @@ const getVelocitiesXY = (x, y) => {
 //////////////////////
 // Player Class
 /////////////////////
+
 class Player {
 	constructor(radius) {
 		// player appearance
@@ -78,6 +79,7 @@ class Player {
 //////////////////////
 // Missile Class
 /////////////////////
+
 class Missile {
 	constructor(x, y, velocityX, velocityY, radius, color) {
 		this.x = x;
@@ -141,13 +143,22 @@ class EnemyMissileFactory {
 
 	createEnemy() {
 		setInterval(() => {
-			const velocities = getVelocitiesXY(50, 50);
-			// generate Math.random()*canvas height/width to get random spawn point
-			// make random function to generate random coordinates
+			let enemyRadius = 15;
+			// create random enemy location
+			let enemyX = Math.random() * canvas.width;
+			let enemyY = Math.random() < 0.5 ? -300 : 20;
+			const velocities = getVelocitiesXY(enemyX, enemyY);
 			this.enemies.push(
-				new EnemyMissile(1, 1, velocities.x, velocities.y, 15, 'red')
+				new EnemyMissile(
+					enemyX,
+					enemyY,
+					velocities.x * 3,
+					velocities.y * 3,
+					enemyRadius,
+					'red'
+				)
 			);
-		}, 2000);
+		}, 1000);
 	}
 
 	updateEnemies() {
@@ -161,6 +172,7 @@ class EnemyMissileFactory {
 // Event Listeners
 /////////////////////
 
+// might be able to put this into player class readyToFire() method
 addEventListener('click', (event) => {
 	// get velocities x y of missile
 	const velocities = getVelocitiesXY(
@@ -169,7 +181,7 @@ addEventListener('click', (event) => {
 	);
 	// on click create a new missile
 	player.missileArray.push(
-		new Missile(playerX, playerY, velocities.x, velocities.y, 5, 'blue')
+		new Missile(playerX, playerY, velocities.x * 3, velocities.y * 3, 5, 'blue')
 	);
 });
 
@@ -181,7 +193,6 @@ const player = new Player(30);
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
 
-const explode = new Explosion(400, 400, 5, 'tomato');
 // animate canvas
 const animate = () => {
 	requestAnimationFrame(animate);
@@ -197,7 +208,6 @@ const animate = () => {
 animate();
 
 /// To Note/fix:
-// make enemies spawn randomly from top and travel to the ground
 // consider putting push missile on click into player object
 // consider how to break it into multiple files
 // change enemy shape or overlay sprite and get orientation
