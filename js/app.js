@@ -42,6 +42,11 @@ const drawCircle = (x, y, radius, color) => {
 	c.fill();
 };
 
+const drawRect = (x, y, width, height, color) => {
+	c.fillStyle = color;
+	c.fillRect(x, y, width, height);
+};
+
 const getVelocitiesXY = (x, y) => {
 	// get angle of trajectory
 	const angle = Math.atan2(x, y);
@@ -122,12 +127,56 @@ class Explosion {
 }
 
 //////////////////////
+// City Class
+/////////////////////
+class City {
+	constructor(x, y, width, height, color) {
+		//city appearance
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color;
+		//city data
+		this.points = 300;
+	}
+	render() {
+		drawRect(this.x, this.y, this.width, this.height, this.color);
+	}
+}
+//////////////////////
+// City Factory Class
+/////////////////////
+
+class CityFactory {
+	constructor() {
+		this.cities = [];
+	}
+
+	createCity() {
+		let cityX = 50;
+		for (let i = 0; i < 6; i++) {
+			let cityY = canvas.height - 70;
+			this.cities.push(new City(cityX, cityY, 50, 70, 'green'));
+			cityX += canvas.width / 6;
+		}
+	}
+
+	renderCities() {
+		this.cities.forEach((city) => {
+			city.render();
+		});
+	}
+}
+//////////////////////
 // Enemy Class
 /////////////////////
 
 class EnemyMissile extends Missile {
 	constructor(x, y, velocityX, velocityY, radius, color) {
+		//enemy appearance
 		super(x, y, velocityX, velocityY, radius, color);
+		//enemy data
 		this.points = 100;
 	}
 }
@@ -187,22 +236,27 @@ addEventListener('click', (event) => {
 
 /////// test program /////////
 
-// player obj
+// player
 const player = new Player(30);
-// enemy factory obj
+
+// enemy factory
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
+
+// city factory
+const cities = new CityFactory();
+cities.createCity();
 
 // animate canvas
 const animate = () => {
 	requestAnimationFrame(animate);
 	// refresh canvas
 	c.clearRect(0, 0, canvas.width, canvas.height);
-
 	// render and update elements
 	player.render();
 	player.updateMissiles();
 	enemyMissileFactory.updateEnemies();
+	cities.renderCities();
 };
 
 animate();
