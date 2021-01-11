@@ -79,6 +79,28 @@ class Player {
 			missile.update();
 		});
 	}
+	fire() {
+		// might be able to put this into player class readyToFire() method
+		addEventListener('click', (event) => {
+			// get velocities x y of missile
+			const velocities = getVelocitiesXY(
+				event.clientY - playerY,
+				event.clientX - playerX
+			);
+
+			// on click create a new missile
+			player.missileArray.push(
+				new Missile(
+					playerX,
+					playerY,
+					velocities.x * 6,
+					velocities.y * 6,
+					5,
+					'blue'
+				)
+			);
+		});
+	}
 }
 
 //////////////////////
@@ -115,6 +137,7 @@ class Explosion {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
+		this.maxRadius = 100;
 		this.color = color;
 	}
 	render() {
@@ -122,7 +145,9 @@ class Explosion {
 	}
 	update() {
 		this.render();
-		this.radius += 2;
+		if (this.radius !== this.maxRadius) {
+			this.radius += 2;
+		}
 	}
 }
 
@@ -168,6 +193,7 @@ class CityFactory {
 		});
 	}
 }
+
 //////////////////////
 // Enemy Class
 /////////////////////
@@ -221,23 +247,25 @@ class EnemyMissileFactory {
 // Event Listeners
 /////////////////////
 
-// might be able to put this into player class readyToFire() method
-addEventListener('click', (event) => {
-	// get velocities x y of missile
-	const velocities = getVelocitiesXY(
-		event.clientY - playerY,
-		event.clientX - playerX
-	);
-	// on click create a new missile
-	player.missileArray.push(
-		new Missile(playerX, playerY, velocities.x * 3, velocities.y * 3, 5, 'blue')
-	);
-});
+// // might be able to put this into player class readyToFire() method
+// addEventListener('click', (event) => {
+// 	// get velocities x y of missile
+// 	const velocities = getVelocitiesXY(
+// 		event.clientY - playerY,
+// 		event.clientX - playerX
+// 	);
+
+// 	// on click create a new missile
+// 	player.missileArray.push(
+// 		new Missile(playerX, playerY, velocities.x * 6, velocities.y * 6, 5, 'blue')
+// 	);
+// });
 
 /////// test program /////////
 
 // player
 const player = new Player(30);
+player.fire();
 
 // enemy factory
 const enemyMissileFactory = new EnemyMissileFactory();
