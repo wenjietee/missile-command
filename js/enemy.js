@@ -27,7 +27,7 @@ class EnemyMissileFactory {
 
 	createEnemy() {
 		setInterval(() => {
-			let enemyRadius = 15;
+			let enemyRadius = 30;
 			// create random enemy location
 			let enemyX = Math.random() * canvas.width;
 			let enemyY = Math.random() < 0.5 ? -300 : 20;
@@ -42,7 +42,7 @@ class EnemyMissileFactory {
 					'red'
 				)
 			);
-		}, 1000);
+		}, 2000);
 	}
 
 	updateEnemies() {

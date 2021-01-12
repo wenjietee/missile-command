@@ -29,28 +29,25 @@ const gameStart = () => {
 	enemyMissileFactory.updateEnemies();
 	cities.renderCities();
 
-	//collision detection
-	player.missiles.forEach((missile, missileIndex) => {
-		enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
-			if (detectBulletEnemyCollision(missile, enemy)) {
+	//iterate through enemies and missiles array to detect collision
+	enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
+		player.missiles.forEach((missile, missileIndex) => {
+			// check if missile and enemy hit
+			if (detectMissileEnemyCollision(missile, enemy)) {
 				player.missiles.splice(missileIndex, 1);
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 			}
 
-			// if (detectCanvasCollision(missile)) {
-			// 	player.missiles.splice(missileIndex, 1);
-			// }
-			// if (detectCanvasCollision(enemy)) {
-			// 	enemyMissileFactory.enemies.splice(enemyIndex, 1);
-			// }
+			// check if missile hits edges of canvas
+			if (detectCanvasCollision(missile)) {
+				player.missiles.splice(missileIndex, 1);
+			}
 		});
+		// check if enemy hits the edges of the canvas
+		if (detectCanvasCollision(enemy)) {
+			enemyMissileFactory.enemies.splice(enemyIndex, 1);
+		}
 	});
-
-	// enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
-	// 	cities.cities.forEach((city, cityIndex) => {
-	// 		console.log(city, enemy);
-	// 	});
-	// });
 };
 
 gameStart();
