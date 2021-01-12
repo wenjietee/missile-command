@@ -34,7 +34,7 @@ class CityFactory {
 		for (let i = 0; i < 6; i++) {
 			let cityY = canvas.height - 70;
 			this.cities.push(new City(cityX, cityY, 50, 70, 'green'));
-			cityX += canvas.width / 6;
+			cityX += canvas.width / 5.5;
 		}
 	}
 

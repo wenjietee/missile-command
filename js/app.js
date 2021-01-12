@@ -1,7 +1,7 @@
 /*
 	Game loads here
+	** Testing **
 */
-/////// test program /////////
 
 // player
 const player = new Player(30);
@@ -20,6 +20,8 @@ const animate = () => {
 	requestAnimationFrame(animate);
 	// refresh canvas
 	c.clearRect(0, 0, canvas.width, canvas.height);
+	// c.fillStyle = 'rgb(255,255,255,0.5)';
+	// c.fillRect(0, 0, canvas.width, canvas.height);
 	// render and update elements
 	player.render();
 	player.updateMissiles();
