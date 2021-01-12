@@ -15,6 +15,7 @@ class Missile {
 		this.velocityY = velocityY;
 		this.radius = radius;
 		this.color = color;
+		this.explodeRadius = 50;
 	}
 
 	render() {
@@ -26,15 +27,13 @@ class Missile {
 		this.x = this.x + this.velocityX;
 		this.y = this.y + this.velocityY;
 	}
-	// explode(x, y) {
-	// 	this.render();
-	// 	this.x = x;
-	// 	this.y = y;
-	// 	this.color = 'orange';
-	// 	if (this.radius !== this.maxRadius) {
-	// 		this.radius += 2;
-	// 	}
-	// }
+	explode() {
+		this.render();
+		this.color = 'orange';
+		if (this.radius !== this.explodeRadius) {
+			this.radius += 2;
+		}
+	}
 }
 
 //////////////////////
@@ -62,27 +61,32 @@ class Player {
 			missile.update();
 		});
 	}
+
 	fire() {
 		addEventListener('click', (event) => {
+			let mouseY = event.clientY;
+			let mouseX = event.clientX;
+
 			// get velocities x y of missile
-			const velocities = getVelocitiesXY(
-				event.clientY - playerY,
-				event.clientX - playerX
-			);
+			const velocities = getVelocitiesXY(mouseY - playerY, mouseX - playerX);
 
-			// on click create a new missile
-			player.missiles.push(
-				new Missile(
-					playerX,
-					playerY,
-					velocities.x * 6,
-					velocities.y * 6,
-					5,
-					'blue'
-				)
-			);
+			// if ammo is not 0 fire missile
+			if (this.missileAmmo !== 0) {
+				// on click create a new missile and push to missile Array
+				player.missiles.push(
+					new Missile(
+						playerX,
+						playerY,
+						velocities.x * 5,
+						velocities.y * 5,
+						5,
+						'blue'
+					)
+				);
 
-			// on hit explode
+				// reduce missile ammo
+				this.missileAmmo--;
+			}
 		});
 	}
 }
