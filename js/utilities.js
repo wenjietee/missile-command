@@ -44,14 +44,26 @@ const getVelocitiesXY = (x, y) => {
 	return { x: Math.cos(angle), y: Math.sin(angle) };
 };
 
-const detectMissileEnemyCollision = (object1, object2) => {
-	let dx = object1.x - object2.x;
-	let dy = object1.y - object2.y;
+//////////////////////
+// Collision Detection
+/////////////////////
+const detectMissileEnemyCollision = (missile, enemy) => {
+	let dx = missile.x - enemy.x;
+	let dy = missile.y - enemy.y;
 	let distance = Math.sqrt(dx * dx + dy * dy);
-	if (distance < object1.radius + object2.radius) {
+	if (distance < missile.radius + enemy.radius) {
 		return true;
 	}
 };
+
+// const detectEnemyCityCollision = (city, enemy) => {
+// 	let dx = enemy.radius - city.x - city.width / 2;
+// 	let dy = enemy.radius - city.y - city.height / 2;
+
+// 	if (dx > city.width / 2 || dy < city.height / 2) {
+// 		return true;
+// 	}
+// };
 
 const detectCanvasCollision = (object) => {
 	if (object.x - object.radius > canvas.width || object.x + object.radius < 0) {

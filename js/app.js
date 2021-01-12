@@ -20,7 +20,7 @@ const gameStart = () => {
 	requestAnimationFrame(gameStart);
 	// refresh canvas
 	c.clearRect(0, 0, canvas.width, canvas.height);
-	// c.fillStyle = 'rgb(255,255,255,0.5)';
+	// c.fillStyle = 'rgb(255,255,255,0.3)';
 	// c.fillRect(0, 0, canvas.width, canvas.height);
 
 	// render and update elements
@@ -29,21 +29,29 @@ const gameStart = () => {
 	enemyMissileFactory.updateEnemies();
 	cities.renderCities();
 
-	//iterate through enemies and missiles array to detect collision
+	//iterate through enemies,cities and missiles array to detect collision
 	enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
 		player.missiles.forEach((missile, missileIndex) => {
-			// check if missile and enemy hit
+			// check if missile and enemy collide
 			if (detectMissileEnemyCollision(missile, enemy)) {
 				player.missiles.splice(missileIndex, 1);
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 			}
 
-			// check if missile hits edges of canvas
+			// check if missile hits edges of canvas and remove missile
 			if (detectCanvasCollision(missile)) {
 				player.missiles.splice(missileIndex, 1);
 			}
 		});
-		// check if enemy hits the edges of the canvas
+
+		// check if enemy and city collide
+		// cities.cities.forEach((city, cityIndex) => {
+		// 	if (detectEnemyCityCollision(city, enemy)) {
+		// 		cities.cities.splice(cityIndex, 1);
+		// 		enemyMissileFactory.enemies.splice(enemyIndex, 1);
+		// 	}
+		// });
+		// check if enemy hits the edges of the canvas and remove enemy
 		if (detectCanvasCollision(enemy)) {
 			enemyMissileFactory.enemies.splice(enemyIndex, 1);
 		}
