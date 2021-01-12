@@ -36,8 +36,21 @@ const gameStart = () => {
 				player.missiles.splice(missileIndex, 1);
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 			}
+
+			// if (detectCanvasCollision(missile)) {
+			// 	player.missiles.splice(missileIndex, 1);
+			// }
+			// if (detectCanvasCollision(enemy)) {
+			// 	enemyMissileFactory.enemies.splice(enemyIndex, 1);
+			// }
 		});
 	});
+
+	// enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
+	// 	cities.cities.forEach((city, cityIndex) => {
+	// 		console.log(city, enemy);
+	// 	});
+	// });
 };
 
 gameStart();

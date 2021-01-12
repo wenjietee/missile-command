@@ -52,3 +52,12 @@ const detectBulletEnemyCollision = (object1, object2) => {
 		return true;
 	}
 };
+
+// const detectCanvasCollision = (object) => {
+// 	if (object.x > canvas.width || object.x < 0) {
+// 		return true;
+// 	}
+// 	if (object.y > canvas.height || object.y < 0) {
+// 		return true;
+// 	}
+// };

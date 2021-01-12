@@ -50,6 +50,7 @@ class Player {
 		// player data
 		this.missileAmmo = 20;
 		this.missiles = [];
+		this.speedFactor = 5;
 		this.score = 0;
 	}
 	render() {
@@ -77,8 +78,8 @@ class Player {
 					new Missile(
 						playerX,
 						playerY,
-						velocities.x * 5,
-						velocities.y * 5,
+						velocities.x * this.speedFactor,
+						velocities.y * this.speedFactor,
 						5,
 						'blue'
 					)

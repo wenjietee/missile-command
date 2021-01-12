@@ -22,6 +22,7 @@ class EnemyMissile extends Missile {
 class EnemyMissileFactory {
 	constructor() {
 		this.enemies = [];
+		this.speedFactor = 3;
 	}
 
 	createEnemy() {
@@ -35,8 +36,8 @@ class EnemyMissileFactory {
 				new EnemyMissile(
 					enemyX,
 					enemyY,
-					velocities.x * 3,
-					velocities.y * 3,
+					velocities.x * this.speedFactor,
+					velocities.y * this.speedFactor,
 					enemyRadius,
 					'red'
 				)
