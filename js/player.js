@@ -49,8 +49,8 @@ class Player {
 		this.radius = radius;
 		this.color = 'gray';
 		// player data
-		this.missileCount = 20;
-		this.missileArray = [];
+		this.missileAmmo = 20;
+		this.missiles = [];
 		this.score = 0;
 	}
 	render() {
@@ -58,7 +58,7 @@ class Player {
 	}
 
 	updateMissiles() {
-		this.missileArray.forEach((missile) => {
+		this.missiles.forEach((missile) => {
 			missile.update();
 		});
 	}
@@ -71,7 +71,7 @@ class Player {
 			);
 
 			// on click create a new missile
-			player.missileArray.push(
+			player.missiles.push(
 				new Missile(
 					playerX,
 					playerY,

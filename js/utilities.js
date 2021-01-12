@@ -43,3 +43,12 @@ const getVelocitiesXY = (x, y) => {
 	// get velocities and return object
 	return { x: Math.cos(angle), y: Math.sin(angle) };
 };
+
+const detectBulletEnemyCollision = (object1, object2) => {
+	let dx = object1.x - object2.x;
+	let dy = object1.y - object2.y;
+	let distance = Math.sqrt(dx * dx + dy * dy);
+	if (distance < object1.radius + object2.radius) {
+		return true;
+	}
+};
