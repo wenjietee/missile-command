@@ -1,9 +1,12 @@
 /*
 	Game loads here
-	** Testing **
 */
 
-// player
+//////////////////////
+// Init Game Objects
+//////////////////////
+
+// player object
 const player = new Player(30);
 player.fire();
 
@@ -15,19 +18,41 @@ enemyMissileFactory.createEnemy();
 const cities = new CityFactory();
 cities.createCity();
 
-// animate canvas
+// game loop
 const gameStart = () => {
-	requestAnimationFrame(gameStart);
-	// refresh canvas
+	// init game loop
+	const gameLoop = requestAnimationFrame(gameStart);
+
+	//////////////////////
+	// Check Win State
+	//////////////////////
+
+	if (cities.cities.length === -1 || player.missileAmmo === 0) {
+		// stop game loop and show gameover modal
+		cancelAnimationFrame(gameLoop);
+		$('#modal-gameover').css('display', 'block');
+	}
+
+	//////////////////////
+	// Refresh canvas
+	//////////////////////
+
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	// c.fillStyle = 'rgb(255,255,255,0.3)';
 	// c.fillRect(0, 0, canvas.width, canvas.height);
 
-	// render and update elements
+	//////////////////////
+	// Render Elements
+	//////////////////////
+
 	player.render();
 	player.updateMissiles();
 	enemyMissileFactory.updateEnemies();
 	cities.renderCities();
+
+	//////////////////////
+	// Collision handling
+	//////////////////////
 
 	//iterate through enemies,cities and missiles array to detect collision
 	enemyMissileFactory.enemies.forEach((enemy, enemyIndex) => {
@@ -58,7 +83,18 @@ const gameStart = () => {
 	});
 };
 
-gameStart();
+// begin game
+const openModal = () => {
+	$('#modal-start').css('display', 'block');
+};
+
+const closeModal = () => {
+	$('#modal-start').css('display', 'none');
+	gameStart();
+};
+
+openModal();
+$('#start').on('click', closeModal);
 
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation

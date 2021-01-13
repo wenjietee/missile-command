@@ -43,4 +43,8 @@ class CityFactory {
 			city.render();
 		});
 	}
+
+	getCities() {
+		return this.cities.length;
+	}
 }

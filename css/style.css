@@ -49,6 +49,7 @@ button:active {
 	border-radius: 15px;
 	margin: 250px auto;
 	text-align: center;
+	user-select: none;
 }
 
 /* #modal-start {
