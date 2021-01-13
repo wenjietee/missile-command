@@ -45,12 +45,12 @@ const gameStart = () => {
 		});
 
 		// check if enemy and city collide
-		// cities.cities.forEach((city, cityIndex) => {
-		// 	if (detectEnemyCityCollision(city, enemy)) {
-		// 		cities.cities.splice(cityIndex, 1);
-		// 		enemyMissileFactory.enemies.splice(enemyIndex, 1);
-		// 	}
-		// });
+		cities.cities.forEach((city, cityIndex) => {
+			if (detectEnemyCityCollision(city, enemy)) {
+				cities.cities.splice(cityIndex, 1);
+				enemyMissileFactory.enemies.splice(enemyIndex, 1);
+			}
+		});
 		// check if enemy hits the edges of the canvas and remove enemy
 		if (detectCanvasCollision(enemy)) {
 			enemyMissileFactory.enemies.splice(enemyIndex, 1);
@@ -62,3 +62,4 @@ gameStart();
 
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation
+// put stuff here into game object?

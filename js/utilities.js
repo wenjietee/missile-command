@@ -50,22 +50,25 @@ const getVelocitiesXY = (x, y) => {
 const detectMissileEnemyCollision = (missile, enemy) => {
 	let dx = missile.x - enemy.x;
 	let dy = missile.y - enemy.y;
-	let distance = Math.sqrt(dx * dx + dy * dy);
-	if (distance < missile.radius + enemy.radius) {
+	let distance = dx ** 2 + dy ** 2;
+
+	// collision detected if distance is less than enemy and missile radiuses
+	if (distance < missile.radius ** 2 + enemy.radius ** 2) {
 		return true;
 	}
 };
 
-// const detectEnemyCityCollision = (city, enemy) => {
-// 	let dx = enemy.radius - city.x - city.width / 2;
-// 	let dy = enemy.radius - city.y - city.height / 2;
+const detectEnemyCityCollision = (city, enemy) => {
+	let dx = Math.abs(enemy.x - city.x - city.width / 2) - city.width / 2;
+	let dy = Math.abs(enemy.y - city.y - city.height / 2) - city.height / 2;
 
-// 	if (dx > city.width / 2 || dy < city.height / 2) {
-// 		return true;
-// 	}
-// };
+	if (dx * dx + dy * dy <= enemy.radius * enemy.radius) {
+		return true;
+	}
+};
 
 const detectCanvasCollision = (object) => {
+	// collision detected if object is greater than  canvas width and height
 	if (object.x - object.radius > canvas.width || object.x + object.radius < 0) {
 		return true;
 	}
