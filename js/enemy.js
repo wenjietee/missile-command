@@ -13,6 +13,10 @@ class EnemyMissile extends Missile {
 		//enemy data
 		this.points = 100;
 	}
+
+	getPoints() {
+		return this.points;
+	}
 }
 
 //////////////////////
@@ -30,7 +34,7 @@ class EnemyMissileFactory {
 			let enemyRadius = 25;
 			// create random enemy location
 			let enemyX = Math.random() * canvas.width;
-			let enemyY = Math.random() < 0.5 ? -300 : 20;
+			let enemyY = Math.random() < 0.5 ? -canvas.height : 0;
 			const velocities = getVelocitiesXY(enemyX, enemyY);
 			this.enemies.push(
 				new EnemyMissile(
@@ -42,7 +46,7 @@ class EnemyMissileFactory {
 					'red'
 				)
 			);
-		}, 1000);
+		}, 500);
 	}
 
 	updateEnemies() {

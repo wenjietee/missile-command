@@ -24,14 +24,21 @@ const gameStart = () => {
 	const gameLoop = requestAnimationFrame(gameStart);
 
 	//////////////////////
-	// Check Win State
+	// Game Conditions
 	//////////////////////
 
-	if (cities.cities.length === -1 || player.missileAmmo === 0) {
+	// check lose state
+	if (cities.cities.length === 0) {
 		// stop game loop and show gameover modal
 		cancelAnimationFrame(gameLoop);
 		$('#modal-gameover').css('display', 'block');
+		$('#restart').on('click', () => {
+			location.reload();
+		});
 	}
+
+	// update score
+	$('#score').text(player.getScore());
 
 	//////////////////////
 	// Refresh canvas
@@ -59,8 +66,11 @@ const gameStart = () => {
 		player.missiles.forEach((missile, missileIndex) => {
 			// check if missile and enemy collide
 			if (detectMissileEnemyCollision(missile, enemy)) {
-				player.missiles.splice(missileIndex, 1);
+				// remove enemy and missile
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
+				player.missiles.splice(missileIndex, 1);
+				// add to player score
+				player.updateScore(enemy.getPoints());
 			}
 
 			// check if missile hits edges of canvas and remove missile
@@ -98,4 +108,4 @@ $('#start').on('click', closeModal);
 
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation
-// put stuff here into game object?
+// add scoring to modals
