@@ -44,9 +44,9 @@ const gameStart = () => {
 	// Refresh canvas
 	//////////////////////
 
-	c.clearRect(0, 0, canvas.width, canvas.height);
-	// c.fillStyle = 'rgb(255,255,255,0.3)';
-	// c.fillRect(0, 0, canvas.width, canvas.height);
+	//c.clearRect(0, 0, canvas.width, canvas.height);
+	c.fillStyle = 'rgb(255,255,255,0.4)';
+	c.fillRect(0, 0, canvas.width, canvas.height);
 
 	//////////////////////
 	// Render Elements

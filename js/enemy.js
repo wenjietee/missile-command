@@ -34,7 +34,8 @@ class EnemyMissileFactory {
 			let enemyRadius = 25;
 			// create random enemy location
 			let enemyX = Math.random() * canvas.width;
-			let enemyY = Math.random() < 0.5 ? -canvas.height : 0;
+			let enemyY = Math.random() < 0.5 ? -enemyRadius : enemyRadius;
+
 			const velocities = getVelocitiesXY(enemyX, enemyY);
 			this.enemies.push(
 				new EnemyMissile(
