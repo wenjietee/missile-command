@@ -28,13 +28,11 @@ class Missile {
 		this.y = this.y + this.velocityY;
 	}
 
-	// explode() {
-	// 	this.render();
-	// 	this.color = 'orange';
-	// 	if (this.radius !== this.explodeRadius) {
-	// 		this.radius += 10;
-	// 	}
-	// }
+	explode() {
+		this.render();
+		this.color = 'orange';
+		this.radius += 10;
+	}
 }
 
 //////////////////////

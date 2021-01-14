@@ -27,6 +27,8 @@ class EnemyMissileFactory {
 	constructor() {
 		this.enemies = [];
 		this.speedFactor = 3;
+		// this.spawnFactor = 1;
+		// this.maxEnemies = 10;
 	}
 
 	createEnemy() {
@@ -49,6 +51,11 @@ class EnemyMissileFactory {
 			);
 		}, 1000);
 	}
+
+	// increaseDiffculty() {
+	// 	this.spawnFactor -= 0.1;
+	// 	this.maxEnemies += 10;
+	// }
 
 	updateEnemies() {
 		this.enemies.forEach((enemy) => {
