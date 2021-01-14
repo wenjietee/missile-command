@@ -38,7 +38,7 @@ const gameStart = () => {
 	}
 
 	// update score
-	$('#score').text(player.getScore());
+	$('.score').html(`Score: ${player.getScore()}`);
 
 	//////////////////////
 	// Refresh canvas
@@ -108,4 +108,3 @@ $('#start').on('click', closeModal);
 
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation
-// add scoring to modals

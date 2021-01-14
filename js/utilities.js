@@ -11,8 +11,8 @@
 const canvas = document.querySelector('canvas');
 
 // set canvas width height same as windows
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = innerWidth - 10;
+canvas.height = innerHeight - 10;
 
 // get 2d drawing context
 const c = canvas.getContext('2d');

@@ -49,7 +49,7 @@ class Player {
 		this.radius = radius;
 		this.color = 'gray';
 		// player data
-		//this.missileAmmo = 20;
+		// this.missileAmmo = 20;
 		this.missiles = [];
 		this.speedFactor = 6;
 		this.score = 0;
@@ -94,7 +94,7 @@ class Player {
 			);
 
 			// reduce missile ammo
-			//this.missileAmmo--;
+			// this.missileAmmo--;
 			// }
 		});
 	}

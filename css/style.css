@@ -8,6 +8,13 @@ body {
 	cursor: crosshair;
 }
 
+h2 {
+	z-index: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding-left: 2em;
+}
 /* Button CSS */
 button {
 	margin-top: 0.3em;

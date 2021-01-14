@@ -46,7 +46,7 @@ class EnemyMissileFactory {
 					'red'
 				)
 			);
-		}, 500);
+		}, 1000);
 	}
 
 	updateEnemies() {
