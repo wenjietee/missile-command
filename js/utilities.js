@@ -11,8 +11,8 @@
 const canvas = document.querySelector('canvas');
 
 // set canvas width height same as windows
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = innerWidth - 10;
+canvas.height = innerHeight - 10;
 
 // get 2d drawing context
 const c = canvas.getContext('2d');
@@ -21,6 +21,8 @@ const c = canvas.getContext('2d');
 const playerX = canvas.width / 2;
 const playerY = canvas.height;
 
+// friction
+const friction = 0.97;
 //////////////////////
 // Helper Functions
 /////////////////////
@@ -32,17 +34,38 @@ const drawCircle = (x, y, radius, color) => {
 	c.fill();
 };
 
+const drawParticle = (x, y, radius, color, alpha) => {
+	c.save();
+	c.beginPath();
+	c.globalAlpha = alpha;
+	c.arc(x, y, radius, Math.PI * 2, false);
+	c.fillStyle = color;
+	c.fill();
+	c.restore();
+};
+
 const drawRect = (x, y, width, height, color) => {
 	c.fillStyle = color;
 	c.fillRect(x, y, width, height);
 };
 
+const drawImage = (x, y, imageSource) => {
+	const img = new Image();
+	img.src = imageSource;
+	c.drawImage(img, x, y, 50, 50);
+};
 const getVelocitiesXY = (x, y) => {
 	// get angle of trajectory
 	const angle = Math.atan2(x, y);
 	// get velocities and return object
 	return { x: Math.cos(angle), y: Math.sin(angle) };
 };
+
+//////////////////////
+// AJAX Function
+/////////////////////
+
+const ajaxGetIcons = (icon) => {};
 
 //////////////////////
 // Collision Detection

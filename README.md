@@ -4,7 +4,7 @@
 
 ---
 
-A browser based game of the 1980 Atari arcade classic. 6 cities are being bombarded by countless missiles, it is up to you, the Player, to defend the cities by shooting them down with missiles of your own.
+A browser based game inspired by the 1980 Atari arcade classic. 6 cities are being bombarded by countless missiles, it is up to you, the Player, to defend the cities by shooting them down with missiles of your own.
 
 ## Game Link:
 
@@ -56,6 +56,9 @@ https://developer.iconfinder.com/reference
 
 ---
 
+- Solving collision detection between the canvas elements (enemy,missile,city) and canvas edges.
+  Solved: Splitting the collision checking into 3 helper functions each checking for 1 collison type (eg. enemy to missile, enemy to city)
+
 ## Known Issues
 
 ---
@@ -63,3 +66,11 @@ https://developer.iconfinder.com/reference
 ## Screenshots
 
 ---
+
+## Extra Features Planned
+
+---
+
+- Co-op Mode
+- Highscore board
+- New enemy types

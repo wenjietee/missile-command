@@ -8,7 +8,7 @@
 /////////////////////
 
 class Missile {
-	constructor(x, y, velocityX, velocityY, radius, color) {
+	constructor(x, y, velocityX, velocityY, radius, color, imageSource) {
 		this.x = x;
 		this.y = y;
 		this.velocityX = velocityX;
@@ -16,10 +16,12 @@ class Missile {
 		this.radius = radius;
 		this.color = color;
 		this.explodeRadius = 50;
+		this.imageSource = imageSource || '';
 	}
 
 	render() {
 		drawCircle(this.x, this.y, this.radius, this.color);
+		drawImage(this.x, this.y, this.imageSource);
 	}
 
 	update() {
@@ -27,14 +29,6 @@ class Missile {
 		this.x = this.x + this.velocityX;
 		this.y = this.y + this.velocityY;
 	}
-
-	// explode() {
-	// 	this.render();
-	// 	this.color = 'orange';
-	// 	if (this.radius !== this.explodeRadius) {
-	// 		this.radius += 10;
-	// 	}
-	// }
 }
 
 //////////////////////
@@ -48,14 +42,16 @@ class Player {
 		this.y = playerY;
 		this.radius = radius;
 		this.color = 'gray';
+		this.imageSource = '';
 		// player data
-		//this.missileAmmo = 20;
+		// this.missileAmmo = 20;
 		this.missiles = [];
 		this.speedFactor = 6;
 		this.score = 0;
 	}
 	render() {
 		drawCircle(this.x, this.y, this.radius, this.color);
+		drawImage(this.x, this.y, this.imageSource);
 	}
 
 	updateMissiles() {
@@ -94,7 +90,32 @@ class Player {
 			);
 
 			// reduce missile ammo
-			//this.missileAmmo--;
+			// this.missileAmmo--;
+			// }
+		});
+		addEventListener('touchstart', (event) => {
+			let mouseY = event.clientY;
+			let mouseX = event.clientX;
+
+			// get velocities x y of missile
+			const velocities = getVelocitiesXY(mouseY - playerY, mouseX - playerX);
+
+			// if ammo is not 0 fire missile
+			// if (this.missileAmmo !== 0) {
+			// on click create a new missile and push to missile Array
+			player.missiles.push(
+				new Missile(
+					playerX,
+					playerY,
+					velocities.x * this.speedFactor,
+					velocities.y * this.speedFactor,
+					5,
+					'blue'
+				)
+			);
+
+			// reduce missile ammo
+			// this.missileAmmo--;
 			// }
 		});
 	}

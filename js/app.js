@@ -14,6 +14,9 @@ player.fire();
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
 
+//particle factory
+const particleFactory = new ParticleFactory();
+
 // city factory
 const cities = new CityFactory();
 cities.createCity();
@@ -38,24 +41,24 @@ const gameStart = () => {
 	}
 
 	// update score
-	$('#score').text(player.getScore());
+	$('.score').html(`Score: ${player.getScore()}`);
 
 	//////////////////////
 	// Refresh canvas
 	//////////////////////
-
 	c.clearRect(0, 0, canvas.width, canvas.height);
-	// c.fillStyle = 'rgb(255,255,255,0.3)';
+	// c.fillStyle = 'rgb(245,245,245,0.4)';
 	// c.fillRect(0, 0, canvas.width, canvas.height);
 
 	//////////////////////
 	// Render Elements
 	//////////////////////
 
-	player.render();
-	player.updateMissiles();
-	enemyMissileFactory.updateEnemies();
 	cities.renderCities();
+	player.updateMissiles();
+	player.render();
+	particleFactory.updateParticles();
+	enemyMissileFactory.updateEnemies();
 
 	//////////////////////
 	// Collision handling
@@ -66,6 +69,8 @@ const gameStart = () => {
 		player.missiles.forEach((missile, missileIndex) => {
 			// check if missile and enemy collide
 			if (detectMissileEnemyCollision(missile, enemy)) {
+				// make particles
+				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 20);
 				// remove enemy and missile
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 				player.missiles.splice(missileIndex, 1);
@@ -82,6 +87,8 @@ const gameStart = () => {
 		// check if enemy and city collide
 		cities.cities.forEach((city, cityIndex) => {
 			if (detectEnemyCityCollision(city, enemy)) {
+				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 50);
+				particleFactory.createParticles(city.x, city.y, city.color, 30);
 				cities.cities.splice(cityIndex, 1);
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 			}
@@ -108,4 +115,3 @@ $('#start').on('click', closeModal);
 
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation
-// add scoring to modals
