@@ -117,6 +117,7 @@ class Player2 {
 	}
 
 	update() {
+		// if co op is active render player 2
 		if (this.isCoOp) {
 			this.render();
 		}

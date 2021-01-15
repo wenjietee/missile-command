@@ -64,10 +64,8 @@ const gameStart = () => {
 	cities.renderCities();
 	player.updateMissiles();
 	player.render();
-	// if co-op active render player2
-	if (player2.isCoOp) {
-		player2.render();
-	}
+	player2.update();
+
 	particleFactory.updateParticles();
 	enemyMissileFactory.updateEnemies();
 
