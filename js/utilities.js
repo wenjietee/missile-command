@@ -65,7 +65,16 @@ const getVelocitiesXY = (x, y) => {
 // AJAX Function
 /////////////////////
 
-const ajaxGetIcons = (icon) => {};
+const ajaxGetRandomChuckNorrisJoke = () => {
+	$.ajax({
+		url: 'http://api.icndb.com/jokes/random',
+	}).then((data) => {
+		$('.joke').text(data.value.joke);
+	}),
+		() => {
+			console.log('bad request');
+		};
+};
 
 //////////////////////
 // Collision Detection

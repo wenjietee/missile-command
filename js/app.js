@@ -35,10 +35,14 @@ const gameStart = () => {
 
 	// check lose state
 	if (cities.cities.length === 0) {
-		// stop game loop and show gameover modal
+		// stop game loop
 		cancelAnimationFrame(gameLoop);
+		// get a Chuck Norris joke
+		ajaxGetRandomChuckNorrisJoke();
+		// and show game over modal
 		$('#modal-gameover').css('display', 'block');
 		$('#restart').on('click', () => {
+			// reloads the page
 			location.reload();
 		});
 	}

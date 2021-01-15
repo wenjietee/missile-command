@@ -25,6 +25,8 @@ Defend the cities from warheads! Game over when all cities are destroyed.
 
 ---
 
+The Internet Chuck Norris Database: http://www.icndb.com/ (For the joke displayed at game over)
+
 ## Technologies Used:
 
 ---
