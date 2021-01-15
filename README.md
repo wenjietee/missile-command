@@ -4,7 +4,7 @@
 
 ---
 
-A browser based game of the 1980 Atari arcade classic. 6 cities are being bombarded by countless missiles, it is up to you, the Player, to defend the cities by shooting them down with missiles of your own.
+A browser based game inspired by the 1980 Atari arcade classic. 6 cities are being bombarded by countless missiles, it is up to you, the Player, to defend the cities by shooting them down with missiles of your own.
 
 ## Game Link:
 

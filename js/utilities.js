@@ -21,6 +21,8 @@ const c = canvas.getContext('2d');
 const playerX = canvas.width / 2;
 const playerY = canvas.height;
 
+// friction
+const friction = 0.97;
 //////////////////////
 // Helper Functions
 /////////////////////
@@ -32,6 +34,16 @@ const drawCircle = (x, y, radius, color) => {
 	c.fill();
 };
 
+const drawParticle = (x, y, radius, color, alpha) => {
+	c.save();
+	c.beginPath();
+	c.globalAlpha = alpha;
+	c.arc(x, y, radius, Math.PI * 2, false);
+	c.fillStyle = color;
+	c.fill();
+	c.restore();
+};
+
 const drawRect = (x, y, width, height, color) => {
 	c.fillStyle = color;
 	c.fillRect(x, y, width, height);
@@ -40,7 +52,7 @@ const drawRect = (x, y, width, height, color) => {
 const drawImage = (x, y, imageSource) => {
 	const img = new Image();
 	img.src = imageSource;
-	c.drawImage(img, x, y, 100, 100);
+	c.drawImage(img, x, y, 50, 50);
 };
 const getVelocitiesXY = (x, y) => {
 	// get angle of trajectory

@@ -14,6 +14,9 @@ player.fire();
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
 
+//particle factory
+const particleFactory = new ParticleFactory();
+
 // city factory
 const cities = new CityFactory();
 cities.createCity();
@@ -43,10 +46,9 @@ const gameStart = () => {
 	//////////////////////
 	// Refresh canvas
 	//////////////////////
-
-	//c.clearRect(0, 0, canvas.width, canvas.height);
-	c.fillStyle = 'rgb(255,255,255,0.4)';
-	c.fillRect(0, 0, canvas.width, canvas.height);
+	c.clearRect(0, 0, canvas.width, canvas.height);
+	// c.fillStyle = 'rgb(245,245,245,0.4)';
+	// c.fillRect(0, 0, canvas.width, canvas.height);
 
 	//////////////////////
 	// Render Elements
@@ -55,7 +57,7 @@ const gameStart = () => {
 	cities.renderCities();
 	player.updateMissiles();
 	player.render();
-
+	particleFactory.updateParticles();
 	enemyMissileFactory.updateEnemies();
 
 	//////////////////////
@@ -67,6 +69,8 @@ const gameStart = () => {
 		player.missiles.forEach((missile, missileIndex) => {
 			// check if missile and enemy collide
 			if (detectMissileEnemyCollision(missile, enemy)) {
+				// make particles
+				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 20);
 				// remove enemy and missile
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 				player.missiles.splice(missileIndex, 1);
@@ -80,9 +84,17 @@ const gameStart = () => {
 			}
 		});
 
+		particleFactory.particles.forEach((particle, particleIndex) => {
+			if (detectMissileEnemyCollision(enemy, particle)) {
+				enemyMissileFactory.enemies.splice(enemyIndex, 1);
+				particleFactory.particles.splice(particleIndex, 1);
+			}
+		});
 		// check if enemy and city collide
 		cities.cities.forEach((city, cityIndex) => {
 			if (detectEnemyCityCollision(city, enemy)) {
+				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 50);
+				particleFactory.createParticles(city.x, city.y, city.color, 30);
 				cities.cities.splice(cityIndex, 1);
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 			}
