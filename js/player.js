@@ -126,7 +126,6 @@ class Player2 {
 		// move left event
 		addEventListener('keydown', (event) => {
 			if (event.code === 'KeyA') {
-				console.log('asdasd');
 				this.x -= 20;
 			}
 			event.preventDefault();
