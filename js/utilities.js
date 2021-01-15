@@ -37,6 +37,11 @@ const drawRect = (x, y, width, height, color) => {
 	c.fillRect(x, y, width, height);
 };
 
+const drawImage = (x, y, imageSource) => {
+	const img = new Image();
+	img.src = imageSource;
+	c.drawImage(img, x, y, 100, 100);
+};
 const getVelocitiesXY = (x, y) => {
 	// get angle of trajectory
 	const angle = Math.atan2(x, y);
@@ -44,6 +49,11 @@ const getVelocitiesXY = (x, y) => {
 	return { x: Math.cos(angle), y: Math.sin(angle) };
 };
 
+//////////////////////
+// AJAX Function
+/////////////////////
+
+const ajaxGetIcon = () => {};
 //////////////////////
 // Collision Detection
 /////////////////////

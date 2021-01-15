@@ -56,6 +56,9 @@ https://developer.iconfinder.com/reference
 
 ---
 
+- Solving collision detection between the canvas elements (enemy,missile,city) and canvas edges.
+  Solved: Splitting the collision checking into 3 helper functions each checking for 1 collison type (eg. enemy to missile, enemy to city)
+
 ## Known Issues
 
 ---
@@ -63,3 +66,11 @@ https://developer.iconfinder.com/reference
 ## Screenshots
 
 ---
+
+## Extra Features Planned
+
+---
+
+- Co-op Mode
+- Highscore board
+- New enemy types

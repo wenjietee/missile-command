@@ -8,7 +8,7 @@
 /////////////////////
 
 class Missile {
-	constructor(x, y, velocityX, velocityY, radius, color) {
+	constructor(x, y, velocityX, velocityY, radius, color, imageSource) {
 		this.x = x;
 		this.y = y;
 		this.velocityX = velocityX;
@@ -16,10 +16,12 @@ class Missile {
 		this.radius = radius;
 		this.color = color;
 		this.explodeRadius = 50;
+		this.imageSource = imageSource || '';
 	}
 
 	render() {
 		drawCircle(this.x, this.y, this.radius, this.color);
+		drawImage(this.x, this.y, this.imageSource);
 	}
 
 	update() {
@@ -28,11 +30,11 @@ class Missile {
 		this.y = this.y + this.velocityY;
 	}
 
-	explode() {
-		this.render();
-		this.color = 'orange';
-		this.radius += 10;
-	}
+	// explode() {
+	// 	this.render();
+	// 	this.color = 'orange';
+	// 	this.radius += 10;
+	// }
 }
 
 //////////////////////
@@ -46,6 +48,7 @@ class Player {
 		this.y = playerY;
 		this.radius = radius;
 		this.color = 'gray';
+		this.imageSource = '';
 		// player data
 		// this.missileAmmo = 20;
 		this.missiles = [];
@@ -54,6 +57,7 @@ class Player {
 	}
 	render() {
 		drawCircle(this.x, this.y, this.radius, this.color);
+		drawImage(this.x, this.y, this.imageSource);
 	}
 
 	updateMissiles() {
