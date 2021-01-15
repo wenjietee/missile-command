@@ -52,7 +52,7 @@ const drawRect = (x, y, width, height, color) => {
 const drawImage = (x, y, imageSource) => {
 	const img = new Image();
 	img.src = imageSource;
-	c.drawImage(img, x, y, 50, 50);
+	c.drawImage(img, x, y, 100, 100);
 };
 const getVelocitiesXY = (x, y) => {
 	// get angle of trajectory

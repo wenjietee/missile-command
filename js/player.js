@@ -41,7 +41,7 @@ class Player {
 		this.x = playerX;
 		this.y = playerY;
 		this.radius = radius;
-		this.color = 'gray';
+		this.color = '#EE8B98';
 		this.imageSource = '';
 		// player data
 		// this.missileAmmo = 20;
@@ -85,32 +85,7 @@ class Player {
 					velocities.x * this.speedFactor,
 					velocities.y * this.speedFactor,
 					5,
-					'blue'
-				)
-			);
-
-			// reduce missile ammo
-			// this.missileAmmo--;
-			// }
-		});
-		addEventListener('touchstart', (event) => {
-			let mouseY = event.clientY;
-			let mouseX = event.clientX;
-
-			// get velocities x y of missile
-			const velocities = getVelocitiesXY(mouseY - playerY, mouseX - playerX);
-
-			// if ammo is not 0 fire missile
-			// if (this.missileAmmo !== 0) {
-			// on click create a new missile and push to missile Array
-			player.missiles.push(
-				new Missile(
-					playerX,
-					playerY,
-					velocities.x * this.speedFactor,
-					velocities.y * this.speedFactor,
-					5,
-					'blue'
+					'#D90429'
 				)
 			);
 

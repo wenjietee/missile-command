@@ -70,7 +70,7 @@ const gameStart = () => {
 			// check if missile and enemy collide
 			if (detectMissileEnemyCollision(missile, enemy)) {
 				// make particles
-				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 20);
+				particleFactory.createParticles(enemy.x, enemy.y, '#f55d16', 30);
 				// remove enemy and missile
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 				player.missiles.splice(missileIndex, 1);

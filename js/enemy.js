@@ -47,7 +47,7 @@ class EnemyMissileFactory {
 					velocities.x * this.speedFactor,
 					velocities.y * this.speedFactor,
 					enemyRadius,
-					'red',
+					'#4f4f4f',
 					this.imageSource
 				)
 			);

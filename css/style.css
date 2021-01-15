@@ -1,24 +1,39 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* Main CSS */
 body {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Bebas Neue', cursive;
+
+	letter-spacing: 1px;
 	margin: 0;
 	cursor: crosshair;
 }
 h2 {
-	position: fixed;
+	position: absolute;
+	z-index: 1;
 	top: 0;
 	left: 0;
 	padding-left: 2em;
+}
+
+canvas {
+	background: rgb(209, 195, 218);
+	background: linear-gradient(
+			180deg,
+			rgba(209, 195, 218, 0.5) 0%,
+			rgba(206, 239, 255, 0.5) 100%
+		),
+		url('');
+	background-size: auto;
+	background-repeat: no-repeat;
 }
 
 /* Button CSS */
 button {
 	margin-top: 0.3em;
 	padding: 0.5em 1em 0.5em 1em;
-	border-radius: 5px;
+	border-radius: 3px;
 	border: none;
 	width: 10em;
 	background: #545454;
@@ -49,30 +64,24 @@ button:active {
 
 #modal-content {
 	background-color: #f0f0f0;
-	width: 560px;
+	max-width: 450px;
+	max-height: 500px;
 	padding: 2em;
-	border: 2px solid #4d4d4d;
-	border-radius: 15px;
+	border-radius: 5px;
 	margin: 250px auto;
 	text-align: center;
 	user-select: none;
+	font-size: 20px;
 }
 
 /* #modal-start {
 	display: block;
-} */
-/* 
+}
+
 #modal-continue {
 	display: block;
-} */
+}
 
-/* #modal-gameover {
+#modal-gameover {
 	display: block;
 } */
-
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-}
-
-/* Landscape */
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-}
