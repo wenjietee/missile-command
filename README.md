@@ -86,10 +86,10 @@ My goal is to create a fun and fast game inspired by the arcade classic. Initial
   ![solo](img/mc-2.JPG)
 
 - Co-op mode, player 1 shoots down warheads and player 2 blocks warheads.
-  ![co-op](img/mc-4.JPG)
+  ![co-op](img/mc-4.jpg)
 
 - Game over when all cities are destroyed.
-  ![gameover](img/mc-3.JPG)
+  ![gameover](img/mc-3.jpg)
 
 ## Extra Features Planned
 
