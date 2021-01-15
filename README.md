@@ -47,7 +47,7 @@ My goal is to create a fun and fast game inspired by the arcade classic. Initial
 ---
 
 - Added Solo and Co-op choices for more playability. Player 2 can use a shield to block warheads.
-- Added some particle efffects for more satisfying kill.
+- Added some particle effects for more satisfying kill.
 
 ## Challenges
 
