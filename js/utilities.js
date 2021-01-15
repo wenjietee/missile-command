@@ -82,7 +82,7 @@ const detectMissileEnemyCollision = (missile, enemy) => {
 	}
 };
 
-const detectEnemyCityCollision = (city, enemy) => {
+const detectCityEnemyCollision = (city, enemy) => {
 	//get distance between enemy and city
 	let dx = Math.abs(enemy.x - city.x - city.width / 2) - city.width / 2;
 	let dy = Math.abs(enemy.y - city.y - city.height / 2) - city.height / 2;

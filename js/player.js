@@ -95,3 +95,48 @@ class Player {
 		});
 	}
 }
+
+//////////////////////
+// Player2 Class
+/////////////////////
+
+class Player2 {
+	constructor(x, y, width, height, color) {
+		//city appearance
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.color = color || 'gray';
+		this.imageSource = '';
+		this.isCoOp = false;
+	}
+	render() {
+		drawRect(this.x, this.y, this.width, this.height, this.color);
+		drawImage(this.x, this.y, this.imageSource);
+	}
+
+	update() {
+		if (this.isCoOp) {
+			this.render();
+		}
+	}
+
+	movement() {
+		// move left event
+		addEventListener('keydown', (event) => {
+			if (event.code === 'KeyA') {
+				console.log('asdasd');
+				this.x -= 20;
+			}
+			event.preventDefault();
+		});
+		// move right event
+		addEventListener('keydown', (event) => {
+			if (event.code === 'KeyD') {
+				this.x += 20;
+			}
+			event.preventDefault();
+		});
+	}
+}

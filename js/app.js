@@ -10,6 +10,9 @@
 const player = new Player(30);
 player.fire();
 
+// player2 object
+const player2 = new Player2(playerX, playerY - 300, 150, 30, '#2739e3');
+
 // enemy factory
 const enemyMissileFactory = new EnemyMissileFactory();
 enemyMissileFactory.createEnemy();
@@ -57,6 +60,9 @@ const gameStart = () => {
 	cities.renderCities();
 	player.updateMissiles();
 	player.render();
+	if (player2.isCoOp) {
+		player2.render();
+	}
 	particleFactory.updateParticles();
 	enemyMissileFactory.updateEnemies();
 
@@ -83,10 +89,15 @@ const gameStart = () => {
 				player.missiles.splice(missileIndex, 1);
 			}
 		});
-
+		// check if enemy and player2 collide
+		if (detectCityEnemyCollision(player2, enemy) && player2.isCoOp) {
+			enemyMissileFactory.enemies.splice(enemyIndex, 1);
+			particleFactory.createParticles(enemy.x, enemy.y, player2.color, 50);
+			player.updateScore(enemy.getPoints());
+		}
 		// check if enemy and city collide
 		cities.cities.forEach((city, cityIndex) => {
-			if (detectEnemyCityCollision(city, enemy)) {
+			if (detectCityEnemyCollision(city, enemy)) {
 				particleFactory.createParticles(enemy.x, enemy.y, enemy.color, 50);
 				particleFactory.createParticles(city.x, city.y, city.color, 30);
 				cities.cities.splice(cityIndex, 1);
@@ -111,7 +122,13 @@ const closeModal = () => {
 };
 
 openModal();
+//init solo game
 $('#start').on('click', closeModal);
-
+// init co-op game
+$('#start-coop').on('click', () => {
+	player2.isCoOp = true;
+	player2.movement();
+	closeModal();
+});
 /// To Note/fix:
 // change enemy shape or overlay sprite and get orientation

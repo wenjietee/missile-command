@@ -15,7 +15,7 @@ class City {
 		this.color = color;
 		this.imageSource = '';
 		//city data
-		this.points = 300;
+		//this.points = 300;
 	}
 	render() {
 		drawRect(this.x, this.y, this.width, this.height, this.color);
