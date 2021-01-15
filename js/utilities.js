@@ -53,7 +53,8 @@ const getVelocitiesXY = (x, y) => {
 // AJAX Function
 /////////////////////
 
-const ajaxGetIcon = () => {};
+const ajaxGetIcons = (icon) => {};
+
 //////////////////////
 // Collision Detection
 /////////////////////

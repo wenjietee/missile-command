@@ -52,10 +52,11 @@ const gameStart = () => {
 	// Render Elements
 	//////////////////////
 
-	player.render();
-	player.updateMissiles();
-	enemyMissileFactory.updateEnemies();
 	cities.renderCities();
+	player.updateMissiles();
+	player.render();
+
+	enemyMissileFactory.updateEnemies();
 
 	//////////////////////
 	// Collision handling
