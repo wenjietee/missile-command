@@ -60,6 +60,7 @@ const gameStart = () => {
 	cities.renderCities();
 	player.updateMissiles();
 	player.render();
+	// if co-op active render player2
 	if (player2.isCoOp) {
 		player2.render();
 	}
@@ -81,6 +82,7 @@ const gameStart = () => {
 				enemyMissileFactory.enemies.splice(enemyIndex, 1);
 				player.missiles.splice(missileIndex, 1);
 				// add to player score
+
 				player.updateScore(enemy.getPoints());
 			}
 
