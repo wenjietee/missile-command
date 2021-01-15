@@ -29,12 +29,6 @@ class Missile {
 		this.x = this.x + this.velocityX;
 		this.y = this.y + this.velocityY;
 	}
-
-	// explode() {
-	// 	this.render();
-	// 	this.color = 'orange';
-	// 	this.radius += 10;
-	// }
 }
 
 //////////////////////
@@ -75,6 +69,31 @@ class Player {
 
 	fire() {
 		addEventListener('click', (event) => {
+			let mouseY = event.clientY;
+			let mouseX = event.clientX;
+
+			// get velocities x y of missile
+			const velocities = getVelocitiesXY(mouseY - playerY, mouseX - playerX);
+
+			// if ammo is not 0 fire missile
+			// if (this.missileAmmo !== 0) {
+			// on click create a new missile and push to missile Array
+			player.missiles.push(
+				new Missile(
+					playerX,
+					playerY,
+					velocities.x * this.speedFactor,
+					velocities.y * this.speedFactor,
+					5,
+					'blue'
+				)
+			);
+
+			// reduce missile ammo
+			// this.missileAmmo--;
+			// }
+		});
+		addEventListener('touchstart', (event) => {
 			let mouseY = event.clientY;
 			let mouseX = event.clientX;
 

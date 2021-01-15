@@ -84,12 +84,6 @@ const gameStart = () => {
 			}
 		});
 
-		particleFactory.particles.forEach((particle, particleIndex) => {
-			if (detectMissileEnemyCollision(enemy, particle)) {
-				enemyMissileFactory.enemies.splice(enemyIndex, 1);
-				particleFactory.particles.splice(particleIndex, 1);
-			}
-		});
 		// check if enemy and city collide
 		cities.cities.forEach((city, cityIndex) => {
 			if (detectEnemyCityCollision(city, enemy)) {
