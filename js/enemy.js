@@ -27,7 +27,6 @@ class EnemyMissileFactory {
 	constructor() {
 		this.enemies = [];
 		this.speedFactor = 3;
-		this.imageSource = '';
 		// this.spawnFactor = 1;
 		// this.maxEnemies = 10;
 	}
@@ -47,8 +46,7 @@ class EnemyMissileFactory {
 					velocities.x * this.speedFactor,
 					velocities.y * this.speedFactor,
 					enemyRadius,
-					'#4f4f4f',
-					this.imageSource
+					'#4f4f4f'
 				)
 			);
 		}, 1000);

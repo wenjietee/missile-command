@@ -33,7 +33,6 @@ class ParticleFactory {
 	constructor() {
 		this.particles = [];
 		this.speedFactor = 10;
-		this.imageSource = '';
 	}
 
 	createParticles(x, y, color, amount) {
@@ -53,14 +52,11 @@ class ParticleFactory {
 
 	updateParticles() {
 		this.particles.forEach((particle, particleIndex) => {
-			c.save();
-
 			if (particle.alpha <= 0) {
 				this.particles.splice(particleIndex, 1);
 			} else {
 				particle.update();
 			}
-			c.restore();
 		});
 	}
 }

@@ -13,13 +13,11 @@ class City {
 		this.width = width;
 		this.height = height;
 		this.color = color;
-		this.imageSource = '';
 		//city data
 		//this.points = 300;
 	}
 	render() {
 		drawRect(this.x, this.y, this.width, this.height, this.color);
-		drawImage(this.x, this.y, this.imageSource);
 	}
 }
 //////////////////////
