@@ -7,9 +7,9 @@
 /////////////////////
 
 class Particle extends Missile {
-	constructor(x, y, velocityX, velocityY, radius, color, imageSource) {
+	constructor(x, y, velocityX, velocityY, radius, color) {
 		//enemy appearance
-		super(x, y, velocityX, velocityY, radius, color, imageSource);
+		super(x, y, velocityX, velocityY, radius, color);
 		this.alpha = 1;
 		//enemy data
 	}
