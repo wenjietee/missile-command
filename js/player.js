@@ -15,7 +15,6 @@ class Missile {
 		this.velocityY = velocityY;
 		this.radius = radius;
 		this.color = color;
-		this.explodeRadius = 50;
 	}
 
 	render() {

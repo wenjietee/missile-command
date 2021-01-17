@@ -8,10 +8,9 @@
 
 class Particle extends Missile {
 	constructor(x, y, velocityX, velocityY, radius, color) {
-		//enemy appearance
+		//particle appearance
 		super(x, y, velocityX, velocityY, radius, color);
 		this.alpha = 1;
-		//enemy data
 	}
 	render() {
 		drawParticle(this.x, this.y, this.radius, this.color, this.alpha);

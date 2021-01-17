@@ -8,21 +8,18 @@
 
 // player object
 const player = new Player(30);
-player.fire();
 
 // player2 object
 const player2 = new Player2(playerX, playerY - 300, 150, 30, '#2739e3');
 
 // enemy factory
 const enemyMissileFactory = new EnemyMissileFactory();
-enemyMissileFactory.createEnemy();
 
 //particle factory
 const particleFactory = new ParticleFactory();
 
 // city factory
 const cities = new CityFactory();
-cities.createCity();
 
 // game loop
 const gameStart = () => {
@@ -65,7 +62,6 @@ const gameStart = () => {
 	player.updateMissiles();
 	player.render();
 	player2.update();
-
 	particleFactory.updateParticles();
 	enemyMissileFactory.updateEnemies();
 
@@ -122,6 +118,10 @@ const openModal = () => {
 
 const closeModal = () => {
 	$('#modal-start').css('display', 'none');
+	// start the game loop
+	player.fire();
+	enemyMissileFactory.createEnemy();
+	cities.createCity();
 	gameStart();
 };
 
@@ -134,5 +134,3 @@ $('#start-coop').on('click', () => {
 	player2.movement();
 	closeModal();
 });
-/// To Note/fix:
-// change enemy shape or overlay sprite and get orientation
