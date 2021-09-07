@@ -88,18 +88,35 @@ const detectMissileEnemyCollision = (missile, enemy) => {
 
 const detectCityEnemyCollision = (city, enemy) => {
 	//get distance between enemy and city
-	let dx = Math.abs(enemy.x - city.x - city.width / 2) - city.width / 2;
-	let dy = Math.abs(enemy.y - city.y - city.height / 2) - city.height / 2;
+	let dx = Math.abs(enemy.x - city.x - city.width / 2);
+	let dy = Math.abs(enemy.y - city.y - city.height / 2);
 
-	// collision detected if enemy dist is more than city distance
-	if (dx ** 2 + dy ** 2 <= enemy.radius * enemy.radius) {
+	if (dx > city.width / 2 + enemy.radius) {
+		return false;
+	}
+	if (dy > city.height / 2 + enemy.radius) {
+		return false;
+	}
+
+	if (dx <= city.width / 2) {
 		return true;
 	}
+	if (dy <= city.height / 2) {
+		return true;
+	}
+
+	// also test for corner collisions
+	let distX = dx - city.width / 2;
+	let distY = dy - city.height / 2;
+	return distX * distX + distY * distY <= enemy.radiys ** 2;
 };
 
 const detectCanvasCollision = (object) => {
 	// collision detected if object distance is greater than  canvas width and height
-	if (object.x - object.radius > canvas.width || object.x + object.radius < 0) {
+	if (
+		object.x - object.radius > canvas.width ||
+		object.x + object.radius < 0
+	) {
 		return true;
 	}
 	if (
