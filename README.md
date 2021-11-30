@@ -70,7 +70,6 @@ My goal is to create a fun and fast game inspired by the arcade classic. Initial
 
 ---
 
--   ~~Player 2 collision issue where warheads will be blocked at the rectangle corners of Player 2 but not at the center.~~ [ Patched 07/09/21 ]
 -   Enemy is spawned before the game is started. A huge rain of enemies will rain down on the player if the game is left to idle without starting.
 -   On resizing the browser, the game needs to be refreshed to adapt to the new dimensions.
 -   Crosshair might be small on bigger screens.
@@ -90,13 +89,6 @@ My goal is to create a fun and fast game inspired by the arcade classic. Initial
 
 -   Game over when all cities are destroyed.
     ![gameover](img/mc-3.jpg)
-
-## Extra Features Planned
-
----
-
--   Highscore board
--   New enemy types
 
 ## Resources Used
 
