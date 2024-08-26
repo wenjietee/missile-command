@@ -62,9 +62,9 @@ const getVelocitiesXY = (x, y) => {
 
 const ajaxGetRandomChuckNorrisJoke = () => {
 	$.ajax({
-		url: 'https://api.icndb.com/jokes/random',
+		url: 'https://api.chucknorris.io/jokes/random',
 	}).then((data) => {
-		$('.joke').text(data.value.joke);
+		$('.joke').text(data.value);
 	}),
 		() => {
 			console.log('bad request');
