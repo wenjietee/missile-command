@@ -24,7 +24,7 @@ canvas {
 			rgba(209, 195, 218, 0.2) 0%,
 			rgba(206, 239, 255, 0.2) 100%
 		),
-		url('https://i.imgur.com/jkBHqb4.jpg');
+		url('../img/bg.jpg');
 }
 
 /* Button CSS */
