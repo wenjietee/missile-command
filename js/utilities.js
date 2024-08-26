@@ -64,7 +64,6 @@ const ajaxGetRandomChuckNorrisJoke = () => {
     $.ajax({
         url: 'https://api.chucknorris.io/jokes/random',
     }).then((data) => {
-        console.log({ data });
         $('.joke').text(data.value);
     }),
         () => {
